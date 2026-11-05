@@ -21,7 +21,7 @@
             <div class="cover-art" aria-hidden="true">
               <div class="cover-orbit orbit-outer"></div>
               <div class="cover-orbit orbit-inner"></div>
-              <span class="cover-star star-a">✳</span>
+              <span class="cover-star star-a">✦</span>
               <span class="cover-star star-b">✦</span>
               <span class="cover-initial">A</span>
               <span class="cover-date">EST. YOUR BIRTHDAY</span>
@@ -40,6 +40,7 @@
             <p class="cake-hint" id="cake-hint">Tap the candle to start the birthday celebration.</p>
             <p class="cake-wish" id="cake-wish" aria-live="polite" hidden>Candle out, celebration on. Hope your day is full of laughs, good cake, and your <span class="cake-favorite-people">favourite people (me!)</span>. 🎂</p>
             <button type="button" class="primary-button next-button" id="birthday-edit-button" disabled>Let the birthday story begin <span>↗</span></button>
+            <p class="visit-count-note">This page counts anonymous visits. No name is collected.</p>
           </div>
         </section>
 
@@ -103,7 +104,7 @@
             <section class="challenge-panel genius-panel">
               <section class="genius-challenge">
                   <div class="genius-heading">
-                    <span class="genius-icon" aria-hidden="true">✳</span>
+                    <span class="genius-icon" aria-hidden="true">✦</span>
                     <span><strong>Not an IQ test — just a little brain teaser.</strong></span>
                   </div>
                   <button type="button" class="text-button genius-start" id="genius-start">Accept the challenge →</button>
@@ -237,7 +238,7 @@
         <section class="screen wish-screen" data-screen="3" aria-labelledby="wish-title" hidden>
           <div class="screen-content wish-content">
             <p class="eyebrow">04 — A BIRTHDAY PAUSE</p>
-            <div class="wish-orbit" aria-hidden="true"><span>✦</span><span>✳</span><span>·</span><span>♡</span></div>
+            <div class="wish-orbit" aria-hidden="true"><span>✦</span><span>✦</span><span>·</span><span>♡</span></div>
             <p class="wish-small">One more thing,</p>
             <h2 id="wish-title">Make a wish,<br><em>Akshatha.</em></h2>
             <p class="wish-copy">Here's to a year that surprises you in the best ways. More things to be curious about, more moments that make you laugh, and more of everything that feels like you.</p>
@@ -247,7 +248,7 @@
               <p class="eyebrow">THE AKSHATHA AWARDS</p>
               <div class="awards-grid">
                 
-                <article class="award-card"><span>✳</span><strong>Suspiciously Smart</strong><small>Receipts not required.</small></article>
+                <article class="award-card"><span>✦</span><strong>Suspiciously Smart</strong><small>Receipts not required.</small></article>
                 <article class="award-card"><span>♡</span><strong>Main Character Energy</strong><small>Especially today.</small></article>
                 
             </section>
@@ -277,25 +278,9 @@
           <span class="progress-dot"></span>
           <span class="progress-dot"></span>
         </div>
-        <button type="button" class="visit-privacy-settings" id="visit-privacy-settings" hidden>Privacy</button>
         <button type="button" class="nav-next" id="nav-next" aria-label="Next screen"><span>Next</span> →</button>
       </nav>
     </div>
-    <dialog class="visit-consent" id="visit-consent" aria-labelledby="visit-consent-title">
-      <p class="eyebrow">BEFORE THE BIRTHDAY SURPRISE</p>
-      <h2 id="visit-consent-title">What should I call you?</h2>
-      <p>Enter your name or a nickname to open the birthday page. The name you enter and the visit date/time will be saved in the visit log so Raj can see who visited and when. Supabase may process connection data to provide this service. Don’t enter anything you’d rather keep private.</p>
-      <form class="visit-consent-form" id="visit-consent-form">
-        <label for="visitor-name">Your name or nickname</label>
-        <input id="visitor-name" name="visitor_name" type="text" maxlength="60" autocomplete="nickname" required>
-        <label class="visit-consent-check">
-          <input id="visit-consent-check" type="checkbox" required>
-          <span>I understand my name and visit time will be recorded.</span>
-        </label>
-        <button type="submit" class="visit-consent-accept" id="visit-consent-accept">Continue to the birthday page</button>
-        <p class="visit-consent-error" id="visit-consent-error" role="alert" hidden></p>
-      </form>
-    </dialog>
     <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
     <script src="script.js"></script>
   </body>

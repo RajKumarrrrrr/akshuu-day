@@ -12,62 +12,30 @@ const visitTrackingConfig = {
   supabaseUrl: "https://pysxmsxcmuvvqlszerfi.supabase.co",
   publishableKey: "sb_publishable_TZW7Kt-dPBVLdmm6BrJB3g_JPDhZeVo"
 };
-const visitConsent = document.querySelector("#visit-consent");
 const prizeProgressKey = "akshatha-birthday-prize-progress";
 const prizeProgress = JSON.parse(localStorage.getItem(prizeProgressKey) || '{"brain":false,"meowdoku":false}');
 
-async function recordVisit(name) {
+async function recordAnonymousVisit() {
   const { supabaseUrl, publishableKey } = visitTrackingConfig;
-  if (!supabaseUrl || !publishableKey) {
-    throw new Error("Visit logging is not configured yet. Ask Raj to finish setting it up.");
-  }
+  if (!supabaseUrl || !publishableKey) return;
 
-  const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/birthday_visits`, {
-    method: "POST",
-    headers: {
-      apikey: publishableKey,
-      Authorization: `Bearer ${publishableKey}`,
-      "Content-Type": "application/json",
-      Prefer: "return=minimal"
-    },
-    body: JSON.stringify({ visitor_name: name })
-  });
-  if (!response.ok) throw new Error(`Visit logging failed with status ${response.status}.`);
+  try {
+    const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/rpc/record_birthday_visit`, {
+      method: "POST",
+      headers: {
+        apikey: publishableKey,
+        Authorization: `Bearer ${publishableKey}`,
+        "Content-Type": "application/json"
+      },
+      body: "{}"
+    });
+    if (!response.ok) throw new Error(`Visit count update failed with status ${response.status}.`);
+  } catch (error) {
+    console.error("Could not update the anonymous birthday visit count.", error);
+  }
 }
 
-const visitConsentForm = document.querySelector("#visit-consent-form");
-const visitNameInput = document.querySelector("#visitor-name");
-const visitConsentError = document.querySelector("#visit-consent-error");
-visitConsentForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const name = visitNameInput.value.trim();
-  if (!name) {
-    visitNameInput.setCustomValidity("Please enter a name or nickname.");
-    visitNameInput.reportValidity();
-    return;
-  }
-  visitNameInput.setCustomValidity("");
-  if (!document.querySelector("#visit-consent-check").checked) return;
-
-  const submitButton = document.querySelector("#visit-consent-accept");
-  submitButton.disabled = true;
-  visitConsentError.hidden = true;
-  try {
-    await recordVisit(name);
-    visitConsent.close();
-  } catch (error) {
-    console.error("Could not save this visit.", error);
-    visitConsentError.textContent = error.message || "Could not save your visit. Please try again.";
-    visitConsentError.hidden = false;
-  } finally {
-    submitButton.disabled = false;
-  }
-});
-visitConsent.addEventListener("cancel", (event) => {
-  event.preventDefault();
-});
-document.querySelector("#visit-privacy-settings").addEventListener("click", () => visitConsent.showModal());
-visitConsent.showModal();
+recordAnonymousVisit();
 
 function updatePrizeProgress() {
   const completed = Number(prizeProgress.brain) + Number(prizeProgress.meowdoku);

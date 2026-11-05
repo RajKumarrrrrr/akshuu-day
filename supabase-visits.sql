@@ -1,50 +1,43 @@
 create table if not exists public.birthday_visits (
-  id uuid primary key default gen_random_uuid(),
-  visitor_name text not null check (char_length(btrim(visitor_name)) between 1 and 60),
+  id bigint generated always as identity primary key,
   visited_at timestamptz not null default now()
 );
 
-alter table public.birthday_visits
-  add column if not exists visitor_name text;
+create table if not exists public.birthday_visit_count (
+  singleton boolean primary key default true check (singleton),
+  total_visits bigint not null default 0 check (total_visits >= 0),
+  last_visited_at timestamptz
+);
 
-update public.birthday_visits
-set visitor_name = 'Previous anonymous visit'
-where visitor_name is null;
-
-alter table public.birthday_visits
-  alter column visitor_name set not null;
+insert into public.birthday_visit_count (singleton, total_visits)
+values (true, 0)
+on conflict (singleton) do nothing;
 
 alter table public.birthday_visits enable row level security;
+alter table public.birthday_visit_count enable row level security;
 
-drop policy if exists "Allow anonymous visit timestamp inserts" on public.birthday_visits;
-drop policy if exists "Allow named visit inserts" on public.birthday_visits;
-
-create policy "Allow named visit inserts"
-  on public.birthday_visits
-  for insert
-  to anon
-  with check (char_length(btrim(visitor_name)) between 1 and 60);
-
-grant usage on schema public to anon;
-grant insert on table public.birthday_visits to anon;
-
-create or replace function public.set_birthday_visit_time()
-returns trigger
+create or replace function public.record_birthday_visit()
+returns table (total_visits bigint, visited_at timestamptz)
 language plpgsql
+security definer
 set search_path = ''
 as $$
+declare
+  v_visited_at timestamptz := now();
+  v_total bigint;
 begin
-  new.visited_at := pg_catalog.now();
-  new.visitor_name := pg_catalog.left(pg_catalog.btrim(new.visitor_name), 60);
-  return new;
+  insert into public.birthday_visits (visited_at) values (v_visited_at);
+  update public.birthday_visit_count
+  set total_visits = total_visits + 1,
+      last_visited_at = v_visited_at
+  where singleton = true
+  returning total_visits into v_total;
+  return query select v_total, v_visited_at;
 end;
 $$;
 
-revoke all on function public.set_birthday_visit_time() from public;
-
-drop trigger if exists set_birthday_visit_time_before_insert on public.birthday_visits;
-
-create trigger set_birthday_visit_time_before_insert
-  before insert on public.birthday_visits
-  for each row
-  execute function public.set_birthday_visit_time();
+revoke all on function public.record_birthday_visit() from public;
+grant usage on schema public to anon;
+grant execute on function public.record_birthday_visit() to anon;
+grant select on public.birthday_visit_count to anon;
+grant select on public.birthday_visits to anon;
