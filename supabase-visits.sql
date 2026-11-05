@@ -16,6 +16,7 @@ on conflict (singleton) do nothing;
 alter table public.birthday_visits enable row level security;
 alter table public.birthday_visit_count enable row level security;
 
+drop function if exists public.record_birthday_visit();
 create or replace function public.record_birthday_visit()
 returns table (total_visits bigint, visited_at timestamptz)
 language plpgsql
