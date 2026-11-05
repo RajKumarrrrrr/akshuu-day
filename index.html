@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff7fa">
+    <meta name="description" content="A birthday surprise for Akshatha, one screen at a time.">
+    <title>For Akshatha — Birthday Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="phone-shell">
+      <main class="screen-stage" id="screen-stage">
+        <section class="screen active welcome-screen" data-screen="0" aria-labelledby="welcome-title">
+          <div class="screen-content welcome-content">
+            <div class="petal-field" aria-hidden="true"><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+            <p class="eyebrow">TODAY IS YOUR DAY</p>
+            <div class="cover-art" aria-hidden="true">
+              <div class="cover-orbit orbit-outer"></div>
+              <div class="cover-orbit orbit-inner"></div>
+              <span class="cover-star star-a">✳</span>
+              <span class="cover-star star-b">✦</span>
+              <span class="cover-initial">A</span>
+              <span class="cover-date">EST. YOUR BIRTHDAY</span>
+            </div>
+            <p class="edition-label">THE AKSHATHA EDITION · BIRTHDAY SPECIAL</p>
+            <h1 id="welcome-title">Happy Birthday,<br><span>Akshatha!</span></h1>
+            <p class="welcome-copy">A little birthday edit for one very<br>clever, very lovely human.</p>
+            <div class="birthday-cake" aria-label="Interactive birthday cake. Tap the candle to blow it out.">
+              <div class="cake-candles">
+                <button type="button" class="cake-candle" aria-label="Blow out candle one"><span class="candle-flame"></span><span class="candle-wick"></span></button>
+              </div>
+              <div class="cake-icing"></div>
+              <div class="cake-layer"></div>
+              <div class="cake-plate"></div>
+            </div>
+            <p class="cake-hint" id="cake-hint">Tap the candle to start the birthday celebration.</p>
+            <p class="cake-wish" id="cake-wish" aria-live="polite" hidden>Candle out, celebration on. Hope your day is full of laughs, good cake, and your <span class="cake-favorite-people">favourite people (me!)</span>. 🎂</p>
+            <button type="button" class="primary-button next-button" id="birthday-edit-button" disabled>Let the birthday story begin <span>↗</span></button>
+          </div>
+        </section>
+
+        <section class="screen note-screen" data-screen="1" aria-labelledby="note-title" hidden>
+          <div class="screen-content note-content">
+            <p class="eyebrow">02 — A NOTE, JUST FOR YOU</p>
+            <div class="note-rule"></div>
+            <p class="note-pretitle">Dear Akshatha,</p>
+            <h2 id="note-title">A new year<br>of being <em>you.</em></h2>
+            <div class="letter-opening">
+              <div class="letter-envelope" aria-hidden="true"><span>♡</span></div>
+              <button type="button" class="text-button letter-open" id="letter-open">Open your letter ↓</button>
+            </div>
+            <article class="letter-reveal" id="letter-reveal" hidden>
+              <p class="letter-salutation" id="letter-salutation"></p>
+              <div id="letter-paragraphs"></div>
+              <p class="note-signoff" id="letter-signoff"></p>
+            </article>
+            <div class="note-mark" aria-hidden="true">A.</div>
+          </div>
+        </section>
+
+        <section class="screen jisoo-screen" data-screen="2" aria-labelledby="jisoo-title" hidden>
+          <div class="screen-content jisoo-content">
+            <p class="eyebrow">03 — A JISOO-INSPIRED BIRTHDAY MOMENT</p>
+            <div class="album-art" aria-label="A Jisoo-inspired rose and record illustration">
+              <div class="album-frame">
+                <span class="album-stamp">FLOWER<br>EDITION</span>
+                <svg class="album-rose" viewBox="0 0 180 220" role="img" aria-label="Stylized pink rose">
+                  <path d="M92 205c4-48 1-67 0-98" fill="none" stroke="#64745d" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M91 162c-27-19-35 2-16 13 8 4 14 0 16-4m1 14c23-20 33-1 14 10-7 4-13 1-15-3" fill="#91aa83"/>
+                  <path d="M91 119c-31 6-42-21-22-39-5-25 28-35 42-16 25-2 34 27 13 43-2 18-21 25-33 12Z" fill="#dd658d"/>
+                  <path d="M88 109c-17-9-13-28 1-30-1-13 16-16 23-5 13 1 16 17 4 24-4 11-18 17-28 11Z" fill="#ef9cb7"/>
+                  <path d="M92 102c-3-9 7-15 14-8 7-4 14 4 8 11-1 8-12 12-18 6" fill="#ffd7e3"/>
+                </svg>
+                <span class="album-side-note">a little<br>flower power</span>
+              </div>
+              <div class="album-disc" aria-hidden="true"><span>J</span></div>
+            </div>
+            <p class="eyebrow album-kicker">A LITTLE FLOWER-ERA MAGIC</p>
+            <h2 id="jisoo-title">A little bloom<br><em>for your day.</em></h2>
+            <p class="jisoo-copy">A Jisoo-inspired birthday moment, made just for you — with a little FLOWER-era sparkle and a Shumon-sized note.</p>
+            <blockquote class="jisoo-wish">
+              <span class="wish-label">A LITTLE BIRTHDAY CARD · JISOO &amp; SHUMON INSPIRED</span>
+              <a class="shumon-link" href="https://www.instagram.com/shumontopia/" target="_blank" rel="noopener noreferrer">
+                <img class="shumon-image" src="assets/shumon.jpg" alt="Shumon, Jisoo's hand-drawn character">
+                <span class="shumon-caption"><strong>Shumon</strong><small>Jisoo's little doodle character ↗</small></span>
+              </a>
+              <p class="wish-greeting">Happy Birthday, Akshatha!</p>
+              <p>May the year ahead bring you laughter that lingers, lovely surprises, and moments that make you feel proud of how far you’ve come. Keep growing, keep dreaming big, and keep shining in your own unmistakable way.</p>
+              <span class="wish-signoff">A little imagined note from Shumon ♡ <span class="fiction-note">(a birthday tribute, not a real message from Jisoo)</span></span>
+            </blockquote>
+          </div>
+        </section>
+
+        <section class="screen game-screen" data-screen="4" aria-labelledby="challenge-title" hidden>
+          <div class="screen-content game-content">
+            <p class="eyebrow">05 — BIRTHDAY CHALLENGE 1 OF 4</p>
+            <h2 id="challenge-title">Birthday brain check<span class="title-dot">.</span></h2>
+            <p class="game-intro">Solve the brain teasers and Meowdoku to unlock your Myntra gift. The Jisoo quiz is a bonus round.</p>
+            <section class="challenge-panel genius-panel">
+              <section class="genius-challenge">
+                  <div class="genius-heading">
+                    <span class="genius-icon" aria-hidden="true">✳</span>
+                    <span><strong>Not an IQ test — just a little brain teaser.</strong></span>
+                  </div>
+                  <button type="button" class="text-button genius-start" id="genius-start">Accept the challenge →</button>
+                  <div class="genius-quiz" id="genius-quiz" hidden>
+                    <div class="genius-progress"><span id="genius-progress-label">QUESTION 1 OF 5</span><span id="genius-score">0 correct</span></div>
+                    <div class="genius-track"><span id="genius-progress-bar"></span></div>
+                    <h3 id="genius-question"></h3>
+                    <div class="genius-options" id="genius-options"></div>
+                    <p class="genius-feedback" id="genius-feedback" aria-live="polite"></p>
+                    <button type="button" class="text-button" id="genius-next" hidden>Next question →</button>
+                    <div class="genius-result" id="genius-result" hidden>
+                      <strong id="genius-result-title">Birthday Genius Points: 0/5</strong>
+                      <p id="genius-result-copy"></p>
+                      <button type="button" class="text-button" id="genius-replay">Play again ↻</button>
+                    </div>
+                  </div>
+              </section>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen game-screen" data-screen="5" aria-labelledby="jisoo-challenge-title" hidden>
+          <div class="screen-content game-content">
+            <p class="eyebrow">06 — BIRTHDAY CHALLENGE 2 OF 4</p>
+            <h2 id="jisoo-challenge-title">Jisoo quiz<span class="title-dot">.</span></h2>
+            <p class="game-intro">A tougher Jisoo quiz, then the birthday spotlight. Finish the round to continue.</p>
+            <section class="challenge-panel jisoo-panel">
+              <section class="jisoo-interactive">
+                  <p class="eyebrow">JISOO QUIZ · JUST FOR FUN</p>
+                  <h3>How well do you know Jisoo?</h3>
+                  <div class="jisoo-quiz" id="jisoo-quiz">
+                    <span class="jisoo-quiz-progress" id="jisoo-quiz-progress">1 / 3</span>
+                    <p id="jisoo-question"></p>
+                    <div class="jisoo-options" id="jisoo-options"></div>
+                    <p class="jisoo-feedback" id="jisoo-feedback" aria-live="polite"></p>
+                    <button type="button" class="text-button" id="jisoo-next" hidden>Next question →</button>
+                  </div>
+                  <div class="spotlight-card">
+                    <p class="eyebrow">THE BIRTHDAY SPOTLIGHT</p>
+                    <h3>Who owns it today?</h3>
+                    <div class="spotlight-options">
+                      <button type="button" class="spotlight-choice" data-spotlight="Jisoo">Jisoo</button>
+                      <span>or</span>
+                      <button type="button" class="spotlight-choice" data-spotlight="Akshatha">Akshatha</button>
+                    </div>
+                    <p id="spotlight-result" aria-live="polite"></p>
+                  </div>
+              </section>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen game-screen" data-screen="6" aria-labelledby="meowdoku-title" hidden>
+          <div class="screen-content game-content">
+            <p class="eyebrow">07 — BIRTHDAY CHALLENGE 3 OF 4</p>
+            <h2 id="meowdoku-title">Meowdoku<span class="title-dot">.</span></h2>
+            <p class="game-intro">Solve this puzzle and finish the brain challenge to unlock your Myntra gift.</p>
+            <section class="challenge-panel meowdoku-panel">
+              <div class="game-card">
+                  <div class="game-topline"><span>MEOWDOKU · TERRITORY LOGIC</span><span id="game-level">BOARD 1 / 3</span></div>
+                  <p class="game-hint" id="game-hint">Place one cat in every row, column &amp; color territory. Cats need personal space — diagonals too.</p>
+                  <div class="game-stats">
+                    <span>TIME <strong id="game-timer">00:00</strong></span>
+                    <span>POINTS <strong id="game-points">0</strong></span>
+                    <span>MISTAKES <strong id="game-mistakes">0 / 3</strong></span>
+                    <span class="game-lives" id="game-lives" aria-label="3 chances remaining">♥ ♥ ♥</span>
+                  </div>
+                  <div class="game-progress"><span id="game-progress-label">0 / 5 cats found</span><span class="game-progress-track"><i id="game-progress-bar"></i></span></div>
+                  <div class="cat-grid" id="cat-grid" role="grid" aria-label="Meowdoku territory puzzle"></div>
+                  <p class="keyboard-hint">Select a tile, then place a cat. Double-tap also places one.</p>
+                  <div class="cat-pad" role="group" aria-label="Meowdoku game controls">
+                    <button type="button" class="cat-action active" id="cat-place" aria-pressed="true"><span aria-hidden="true">♟</span> Place cat</button>
+                    <button type="button" class="cat-action" id="cat-mark" aria-pressed="false"><span aria-hidden="true">×</span> Mark empty</button>
+                    <button type="button" class="cat-action" id="cat-erase" aria-label="Erase selected tile"><span aria-hidden="true">⌫</span> Erase</button>
+                  </div>
+                  <div class="game-actions">
+                    <button type="button" class="text-button" id="game-hint-button">Need a hint?</button>
+                    <span class="game-status" id="game-status" aria-live="polite"></span>
+                    <button type="button" class="text-button" id="game-new">New game ↻</button>
+                  </div>
+                  <div class="game-complete" id="game-complete" hidden>
+                    <strong>Board cleared!</strong>
+                    <p>Congratulations! Your brain has officially passed the birthday inspection. 😂</p>
+                  </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen game-screen" data-screen="7" aria-labelledby="gift-hunt-title" hidden>
+          <div class="screen-content game-content">
+            <p class="eyebrow">08 — BIRTHDAY CHALLENGE 4 OF 4</p>
+            <h2>One last surprise<span class="title-dot">.</span></h2>
+            <p class="game-intro">Finish the two puzzles to unwrap your Myntra birthday treat.</p>
+            <section class="gift-hunt" aria-labelledby="gift-hunt-title">
+                <p class="eyebrow">A LITTLE PRIZE HUNT</p>
+                <h3 id="gift-hunt-title">Your Myntra treat awaits.</h3>
+                <p class="gift-hunt-status" id="gift-hunt-status" aria-live="polite">Complete the brain challenge and Meowdoku to unlock your prize. 0/2 complete.</p>
+                <button type="button" class="gift-wrap-button" id="gift-wrap-button" disabled>🔒 Your birthday gift</button>
+                <div class="gift-reveal" id="gift-reveal" hidden>
+                  <article class="myntra-card" aria-label="Myntra gift card worth 2,000 rupees">
+                    <div class="myntra-card-top">
+                      <span class="myntra-mark" aria-hidden="true">M</span>
+                      <span class="myntra-wordmark">myntra</span>
+                      <span class="myntra-card-label">GIFT CARD</span>
+                    </div>
+                    <div class="myntra-card-main">
+                      <p>A little something<br>to pick out a treat you love.</p>
+                      <strong>₹2,000</strong>
+                    </div>
+                    <div class="myntra-card-details" aria-label="Gift card details, partially masked">
+                      <span>Card number <strong>•••• •••• •••• X708</strong></span>
+                      <span>PIN <strong>••••</strong></span>
+                    </div>
+                    <div class="myntra-card-bottom">
+                      <span>HAPPY BIRTHDAY, AKSHATHA ♡</span>
+                      <span>VALID THRU 04 NOV 2027</span>
+                    </div>
+                  </article>
+                  <p class="gift-private-note">The full card number and PIN are masked for safekeeping. Contact me for the details. 💝</p>
+                  <div class="birthday-finale">
+                    <p class="eyebrow">AND THAT'S THE BIRTHDAY EDIT ♡</p>
+                    <p>Happy birthday, Akshatha. I hope this little surprise made you smile. Here’s to a year as lovely and brilliant as you are. ❤️</p>
+                    <button type="button" class="text-button" id="close-birthday-edit">Close and return to the beginning ↺</button>
+                  </div>
+                </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen wish-screen" data-screen="3" aria-labelledby="wish-title" hidden>
+          <div class="screen-content wish-content">
+            <p class="eyebrow">04 — A BIRTHDAY PAUSE</p>
+            <div class="wish-orbit" aria-hidden="true"><span>✦</span><span>✳</span><span>·</span><span>♡</span></div>
+            <p class="wish-small">One more thing,</p>
+            <h2 id="wish-title">Make a wish,<br><em>Akshatha.</em></h2>
+            <p class="wish-copy">Here's to a year that surprises you in the best ways. More things to be curious about, more moments that make you laugh, and more of everything that feels like you.</p>
+            <button type="button" class="primary-button wish-button" id="wish-button">A toast to your next chapter <span>✦</span></button>
+            <p class="hidden-wish" id="hidden-wish" hidden>To you, Akshatha. Happy birthday. 🥂</p>
+            <section class="personality-awards">
+              <p class="eyebrow">THE AKSHATHA AWARDS</p>
+              <div class="awards-grid">
+                
+                <article class="award-card"><span>✳</span><strong>Suspiciously Smart</strong><small>Receipts not required.</small></article>
+                <article class="award-card"><span>♡</span><strong>Main Character Energy</strong><small>Especially today.</small></article>
+                
+            </section>
+            <button type="button" class="secret-trigger" id="secret-trigger">Wait... one more thing 👀</button>
+            <div class="secret-card" id="secret-card" hidden>
+              <span class="secret-confetti">✦ ✿ ✦</span>
+              <p class="eyebrow">BIRTHDAY EXPERIENCE COMPLETE</p>
+              <h3>Congratulations, Akshatha!</h3>
+              <p>Your rewards: unlimited happiness, 1,000 genius points, officially certified awesome person, and permission to be extra fabulous today.</p>
+              <p class="secret-signoff">Happy Birthday! ❤️</p>
+              <button type="button" class="text-button" id="replay-experience">Replay from the beginning ↻</button>
+            </div>
+            <p class="closing-note">End of the edit. The beginning of a very good year.</p>
+          </div>
+        </section>
+      </main>
+
+      <nav class="screen-nav" aria-label="Birthday screens">
+        <button type="button" class="nav-back" id="nav-back" aria-label="Previous screen" disabled>← <span>Back</span></button>
+        <div class="progress-dots" aria-label="Screen progress">
+          <span class="progress-dot active" aria-current="step"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+        <button type="button" class="nav-next" id="nav-next" aria-label="Next screen"><span>Next</span> →</button>
+      </nav>
+    </div>
+    <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
