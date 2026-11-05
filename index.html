@@ -277,9 +277,25 @@
           <span class="progress-dot"></span>
           <span class="progress-dot"></span>
         </div>
+        <button type="button" class="visit-privacy-settings" id="visit-privacy-settings" hidden>Privacy</button>
         <button type="button" class="nav-next" id="nav-next" aria-label="Next screen"><span>Next</span> →</button>
       </nav>
     </div>
+    <dialog class="visit-consent" id="visit-consent" aria-labelledby="visit-consent-title">
+      <p class="eyebrow">BEFORE THE BIRTHDAY SURPRISE</p>
+      <h2 id="visit-consent-title">What should I call you?</h2>
+      <p>Enter your name or a nickname to open the birthday page. The name you enter and the visit date/time will be saved in the visit log so Raj can see who visited and when. Supabase may process connection data to provide this service. Don’t enter anything you’d rather keep private.</p>
+      <form class="visit-consent-form" id="visit-consent-form">
+        <label for="visitor-name">Your name or nickname</label>
+        <input id="visitor-name" name="visitor_name" type="text" maxlength="60" autocomplete="nickname" required>
+        <label class="visit-consent-check">
+          <input id="visit-consent-check" type="checkbox" required>
+          <span>I understand my name and visit time will be recorded.</span>
+        </label>
+        <button type="submit" class="visit-consent-accept" id="visit-consent-accept">Continue to the birthday page</button>
+        <p class="visit-consent-error" id="visit-consent-error" role="alert" hidden></p>
+      </form>
+    </dialog>
     <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
     <script src="script.js"></script>
   </body>
